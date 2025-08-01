@@ -1,59 +1,86 @@
-# WarehouseManagement
+# 🚀 BRUNT REVERSAL JUST-IN-TIME GLITCH – PROPHECY
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
+## 📦 Project Overview
 
-## Development server
+**BRUNT REVERSAL JUST-IN-TIME GLITCH – PROPHECY** is a QR Code-based Warehouse Management System developed using **Angular (Frontend)** and **Spring Boot (Backend)** with a **MySQL** database. This project facilitates streamlined warehouse operations through robust product management, real-time tracking, staff allocation, QR-based scanning, and issue reporting.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🛠️ Technologies Used
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+| Layer      | Technology                                |
+|------------|-------------------------------------------|
+| Frontend   | Angular                                   |
+| Backend    | Spring Boot (REST APIs)                   |
+| Database   | MySQL                                     |
+| QR Code    | [qrcode](https://www.npmjs.com/package/qrcode) (installed via `npm install qrcode`) |
+| Tools      | Visual Studio Code, Eclipse, Postman      |
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🧑‍💻 How to Run the Project
 
-```bash
-ng generate component component-name
-```
+### ✅ Backend Setup (Spring Boot)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1. Open Eclipse or IntelliJ.
+2. Import the `warehouse-backend` folder as a Maven project.
+3. Configure your database credentials in `src/main/resources/application.properties`:
+    ```properties
+    spring.datasource.url=jdbc:mysql://localhost:3306/warehouse_management
+    spring.datasource.username=YOUR_USERNAME
+    spring.datasource.password=YOUR_PASSWORD
+    ```
+4. Create the database `warehouse_management` manually.
+5. Import the provided `warehouse_management.sql` file to populate tables.
+6. Run the application via `WarehouseManagementApplication.java`.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+### ✅ Frontend Setup (Angular)
 
-To build the project run:
+1. Open the `warehouse-frontend` folder in Visual Studio Code.
+2. Run the following commands in terminal:
+    ```bash
+    npm install
+    ng serve
+    ```
+3. Navigate to `http://localhost:4200` in your browser to view the application.
 
-```bash
-ng build
-```
+---
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📂 Project Modules
 
-## Running unit tests
+### 👤 Admin Panel
+- Login / Logout with tracking
+- Add / View / Update / Delete Products
+- Generate QR Codes for Products
+- Assign Products to Staff
+- Add / View / Update / Delete Staff
+- View Low Stock Alerts
+- View / Manage Product Issue Reports
+- Download QR Code / Product Reports
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### 👷 Staff Dashboard
+- Login / Logout with tracking
+- View Assigned Products
+- Scan QR Code for Product Details
+- Report Product Issues to Admin
 
-```bash
-ng test
-```
+---
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
+## 🔐 Login Credentials (Example)
 
-```bash
-ng e2e
-```
+> Replace these with your own after deploying.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+### Admin
+- **Email:** `admin@gmail.com`
+- **Password:** `admin123`
 
-## Additional Resources
+### Staff
+- **Email:** `staff1@gmail.com`
+- **Password:** `staff123`
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
