@@ -1,0 +1,62 @@
+<h2>📦 View Products</h2>
+
+<!-- Search and Filters -->
+<div class="filters">
+  <input
+    type="text"
+    placeholder="Search by Name, Brand or SKU..."
+    [(ngModel)]="searchTerm"
+    (input)="filterProducts()"
+  />
+
+  <select [(ngModel)]="selectedCategory" (change)="filterProducts()">
+    <option value="">All Categories</option>
+    <option value="electronics">Electronics</option>
+    <option value="furniture">Furniture</option>
+    <option value="clothes">Clothes</option>
+  </select>
+</div>
+
+<!-- Product Table -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th> <!-- ✅ New Column -->
+      <th>SKU</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Brand</th>
+      <th>Quantity</th>
+      <th>Price (₹)</th>
+      <th>Location</th>
+      <th>Image</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of filteredProducts">
+      <td>{{ product.id }}</td> <!-- ✅ New Column for ID -->
+      <td>{{ product.productCode }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.brand }}</td>
+      <td [class.low-stock]="product.quantity < 5">{{ product.quantity }}</td>
+      <td>₹{{ product.price }}</td>
+      <td>{{ product.location }}</td>
+      <td><img [src]="'data:image/png;base64,' + product.image1" class="thumbnail" /></td>
+      
+      <!-- Actions Column -->
+      <td>
+        <button class="btn-icon" (click)="deleteProduct(product.id)" title="Delete">
+          <i class="fas fa-trash"></i>
+        </button>
+        <button class="btn-icon" (click)="downloadQR(product)" title="Download QR">
+          <i class="fas fa-qrcode"></i>
+        </button>
+        <button class="btn-icon" title="Edit" (click)="editProduct(product)">
+          <i class="fas fa-pen-to-square"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

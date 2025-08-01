@@ -1,0 +1,82 @@
+<h2>Add New Product</h2>
+
+<form [formGroup]="productForm" (ngSubmit)="submitProduct($event)" novalidate>
+
+  <!-- Product Code (SKU) : Auto-generated -->
+  <label>
+    <strong>Product Code / SKU:</strong>
+    <input [value]="sku" readonly required />
+  </label>
+
+  <!-- Product Name -->
+  <label>
+    <strong>Product Name:</strong>
+    <input formControlName="name" required />
+  </label>
+
+  <!-- Category -->
+  <label>
+    <strong>Category:</strong>
+    <select formControlName="category" required>
+      <option value="">Select</option>
+      <option value="electronics">Electronics</option>
+      <option value="furniture">Furniture</option>
+      <option value="clothes">Clothes</option>
+    </select>
+  </label>
+
+  <!-- Brand -->
+  <label>
+    <strong>Brand:</strong>
+    <input formControlName="brand" required />
+  </label>
+
+  <!-- Quantity -->
+  <label>
+    <strong>Quantity:</strong>
+    <input type="number" formControlName="quantity" required />
+  </label>
+
+  <!-- Price -->
+  <label>
+    <strong>Price (₹):</strong>
+    <input type="number" formControlName="price" required />
+  </label>
+
+  <!-- Location -->
+  <label>
+    <strong>Location:</strong>
+    <input formControlName="location" required />
+  </label>
+
+  <!-- Description -->
+  <label>
+    <strong>Description:</strong>
+    <textarea formControlName="description" rows="3"></textarea>
+  </label>
+
+  <!-- Image Upload -->
+  <label>
+    <strong>Upload 3 Images:</strong>
+    <input type="file" (change)="onFileChange($event)" multiple accept="image/*" required />
+  </label>
+
+  <!-- Image Preview -->
+  <div class="image-preview">
+    <img *ngFor="let img of imagePreviews" [src]="img" width="100" height="100" style="margin-right: 5px;" />
+  </div>
+
+  <!-- QR Code Button -->
+  <button type="button" (click)="generateQRCode()">Generate QR Code</button>
+
+  <!-- QR Preview -->
+  <div *ngIf="qrCodeImage" class="qr-preview">
+    <h4>QR Code Preview:</h4>
+    <img [src]="qrCodeImage" width="220" height="220" style="border: 1px solid #ccc" />
+  </div>
+
+  
+
+  <!-- Submit -->
+  <button type="submit">Submit Product</button>
+</form>

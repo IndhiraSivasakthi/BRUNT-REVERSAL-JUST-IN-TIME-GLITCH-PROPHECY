@@ -1,0 +1,133 @@
+/* === Page Title === */
+h2 {
+  text-align: center;
+  color: #1e293b; /* Use consistent brand color */
+  margin-bottom: 30px; /* Spacious margin */
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 0.8px;
+}
+
+/* === Form Container === */
+.staff-form {
+  max-width: 600px; /* Slightly wider for better input spacing */
+  margin: 2rem auto;
+  padding: 30px 25px;
+  background: #ffffff; /* Use light background */
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgb(50 50 93 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* === Labels & Inputs === */
+.staff-form label {
+  font-weight: 600;
+  color: #475569; /* soft gray-blue */
+  font-size: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.staff-form input,
+.staff-form select,
+.staff-form textarea {
+  padding: 14px 16px;
+  border: 1.5px solid #cbd5e1; /* Slightly thicker border */
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 400;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  color: #334155;
+  background-color: #f9fafb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.staff-form input:focus,
+.staff-form select:focus,
+.staff-form textarea:focus {
+  outline: none;
+  border-color: #3b82f6; /* Tailwind blue */
+  box-shadow: 0 0 6px rgba(59, 130, 246, 0.5);
+  background-color: #ffffff;
+}
+
+/* === Textarea Fix === */
+.staff-form textarea {
+  resize: vertical;
+  min-height: 80px;
+  font-size: 14.5px;
+}
+
+/* === Action Buttons === */
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.form-actions button {
+  flex: 1;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+  /* Smooth color transition */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-actions button:first-child {
+  background-color: #3b82f6;
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+.form-actions button:first-child:hover {
+  background-color: #2563eb;
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+}
+
+.form-actions button:last-child {
+  background-color: #e00e0e;
+  color:white;
+  box-shadow: 0 3px 6px rgba(236, 5, 5, 0.836);
+}
+
+
+/* === Messages === */
+.success-msg {
+  font-weight: 600;
+  color: #22c55e; /* green-500 */
+  font-size: 15px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.error-msg {
+  font-weight: 600;
+  color: #ef4444; /* red-500 */
+  font-size: 15px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* === Responsive Improvements === */
+@media (max-width: 600px) {
+  .staff-form {
+    padding: 25px 20px;
+    width: 90%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}

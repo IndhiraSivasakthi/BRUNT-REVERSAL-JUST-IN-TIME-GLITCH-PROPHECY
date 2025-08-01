@@ -1,0 +1,96 @@
+/* Global Dashboard Container */
+.dashboard-container {
+  padding: 50px 30px;
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Enhanced Welcome Card Styling - Updated Width & Height */
+.welcome-card {
+  background: linear-gradient(135deg, #ffffff, #dfefff);
+  border-left: 6px solid #0078d7;
+  border-radius: 20px;
+  padding: 25px 50px; /* ↓ reduced vertical padding, ↑ horizontal */
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  margin-bottom: 30px;
+  max-width: 95%;      /* ↑ increased width */
+  width: 95%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.welcome-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.welcome-card h2 {
+  font-size: 2.4rem;
+  color: #1f2f56;
+  font-weight: 700;
+  margin-bottom: 8px; /* ↓ tighter spacing */
+}
+
+.welcome-card span {
+  color: #0078d7;
+  font-weight: 700;
+}
+
+.welcome-card .subtitle {
+  font-size: 1.1rem;
+  color: #444;
+  margin-top: 8px; /* ↓ less vertical space */
+}
+
+/* Cards Grid */
+.dashboard-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 25px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Individual Action Cards */
+.dashboard-card.action-card {
+  background: #f9f9f9;
+  border-radius: 18px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.05),
+              -4px -4px 12px rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.dashboard-card.action-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.08);
+  border-color: #0078d7;
+}
+
+/* Icon Styling */
+.dashboard-card i {
+  font-size: 2.6rem;
+  margin-bottom: 14px;
+  color: #0078d7;
+}
+
+/* Card Text */
+.dashboard-card h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.dashboard-card p {
+  font-size: 0.95rem;
+  color: #666;
+}
+

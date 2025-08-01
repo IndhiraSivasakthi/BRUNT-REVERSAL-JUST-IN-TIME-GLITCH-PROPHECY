@@ -1,0 +1,109 @@
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Filter section */
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin: 16px auto;
+  max-width: 800px;
+  gap: 10px;
+}
+
+.filters input,
+.filters select {
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  max-width: 1000px;
+  margin: auto;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+thead {
+  background-color: #3498db;
+  color: white;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Low Stock */
+.low-stock {
+  background-color: #e74c3c;
+  color: white;
+  font-weight: bold;
+}
+
+/* Product image */
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Buttons */
+button {
+  padding: 6px 12px;
+  margin: 2px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+/* Action Icon Buttons */
+.btn-icon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  font-size: 18px;
+  margin: 0 5px;
+}
+
+.btn-icon i {
+  color: #2c3e50;
+  transition: color 0.3s;
+}
+
+.btn-icon:hover i.fa-eye {
+  color: #17a2b8;
+}
+
+.btn-icon:hover i.fa-pen-to-square {
+  color: #ffc107;
+}
+
+.btn-icon:hover i.fa-trash {
+  color: #e74c3c;
+}
+
+.btn-icon:hover i.fa-qrcode {
+  color: #3498db;
+}

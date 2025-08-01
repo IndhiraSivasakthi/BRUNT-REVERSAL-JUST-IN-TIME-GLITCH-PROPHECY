@@ -1,0 +1,30 @@
+<div class="assigned-products-container">
+  <h2>📦 Assigned Products</h2>
+
+  <!-- Assigned Products Table -->
+  <table class="assigned-products-table" *ngIf="assignedProducts.length > 0">
+    <thead>
+      <tr>
+        <th>Staff ID</th>
+        <th>Product Name</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of assignedProducts">
+        <td>{{ product.staffId }}</td>
+        <td>{{ product.productName }}</td>
+        <td>
+          <button (click)="unassignProduct(product.id)" class="unassign-button" title="Unassign Product">
+            <i class="fas fa-times-circle"></i> Unassign
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Empty State Message -->
+  <p *ngIf="assignedProducts.length === 0">
+    ❌ No assigned products found.
+  </p>
+</div>

@@ -1,0 +1,174 @@
+/* Container for the entire form */
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Form Heading */
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+h2::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: #3498db;
+  margin: 8px auto 0;
+  border-radius: 2px;
+}
+
+/* Labels */
+label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 14px;
+  color: #34495e;
+}
+
+/* Input, Select, Textarea */
+input,
+select,
+textarea {
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  background-color: #f9f9f9;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #5dade2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(93, 173, 226, 0.2);
+}
+
+/* File Upload Input */
+input[type="file"] {
+  padding: 8px;
+  border: none;
+  background-color: #eef1f5;
+  font-size: 14px;
+}
+
+/* File selection custom button style */
+input[type="file"]::file-selector-button {
+  padding: 8px 14px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #2980b9;
+}
+
+/* Buttons */
+button {
+  padding: 12px;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+/* Image Preview Section */
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: start;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.image-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.image-preview img:hover {
+  transform: scale(1.05);
+}
+
+/* QR Preview Section Styling */
+.qr-preview {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.qr-preview h4 {
+  font-size: 18px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.qr-preview img {
+  border-radius: 8px;
+  border: 2px dashed #ccc;
+  padding: 10px;
+  width: 220px;
+  height: 220px;
+  background-color: #fcfcfc;
+  margin-top: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  form {
+    padding: 20px;
+  }
+
+  .image-preview {
+    justify-content: center;
+  }
+
+  .image-preview img {
+    width: 90px;
+    height: 90px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

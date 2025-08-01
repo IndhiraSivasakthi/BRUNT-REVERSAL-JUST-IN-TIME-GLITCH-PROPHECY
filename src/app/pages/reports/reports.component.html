@@ -1,0 +1,78 @@
+<div class="report-container">
+  <h2>📋 Reported Issues</h2>
+
+  <!-- Filter dropdown -->
+  <label>
+    Filter by Status:
+    <select [(ngModel)]="filterStatus" (change)="applyFilter()">
+      <option>All</option>
+      <option>Pending</option>
+      <option>In Progress</option>
+      <option>Resolved</option>
+      <option>Closed</option>
+    </select>
+  </label>
+
+  <!-- Report table -->
+  <table>
+    <thead>
+      <tr>
+        <th>#ID</th>
+        <th>Product Id</th>
+        <th>Issue Type</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let report of filteredReports">
+        <td>{{ report.reportId }}</td>
+        <td>{{ report.productId }}</td>
+        <td>{{ report.issueType }}</td>
+        <td>{{ report.description }}</td>
+
+        <!-- Colored status label -->
+        <td>
+          <span [ngClass]="{
+            'status-pending': report.status === 'Pending',
+            'status-in-progress': report.status === 'In Progress',
+            'status-resolved': report.status === 'Resolved',
+            'status-closed': report.status === 'Closed'
+          }">
+            {{ report.status }}
+          </span>
+        </td>
+
+        <!-- Actions -->
+        <td>
+          <!-- For Pending status -->
+          <ng-container *ngIf="report.status === 'Pending'">
+            <button title="Mark In Progress" (click)="updateStatus(report.reportId, 'In Progress')">🚧</button>
+            <button title="Mark Resolved" (click)="updateStatus(report.reportId, 'Resolved')">✅</button>
+            <button title="Mark Closed" (click)="updateStatus(report.reportId, 'Closed')">🔒</button>
+            <button title="Delete Report" (click)="deleteReport(report.reportId)">🗑️</button>
+          </ng-container>
+
+          <!-- For In Progress status -->
+          <ng-container *ngIf="report.status === 'In Progress'">
+            <button title="Mark Resolved" (click)="updateStatus(report.reportId, 'Resolved')">✅</button>
+            <button title="Mark Closed" (click)="updateStatus(report.reportId, 'Closed')">🔒</button>
+            <button title="Delete Report" (click)="deleteReport(report.reportId)">🗑️</button>
+          </ng-container>
+
+          <!-- For Resolved status -->
+          <ng-container *ngIf="report.status === 'Resolved'">
+            <button title="Mark Closed" (click)="updateStatus(report.reportId, 'Closed')">🔒</button>
+            <button title="Delete Report" (click)="deleteReport(report.reportId)">🗑️</button>
+          </ng-container>
+
+          <!-- For Closed status -->
+          <ng-container *ngIf="report.status === 'Closed'">
+            <button title="Delete Report" (click)="deleteReport(report.reportId)">🗑️</button>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

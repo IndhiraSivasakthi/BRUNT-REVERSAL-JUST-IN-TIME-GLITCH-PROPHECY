@@ -1,0 +1,39 @@
+<div class="login-container">
+  <div class="login-box">
+    <h2>Staff Login</h2>
+
+    <form (ngSubmit)="login()" class="login-form">
+      <input
+        type="text"
+        placeholder="Email"
+        [(ngModel)]="email"
+        name="email"
+        (blur)="fetchStaffId()"
+        autocomplete="username"
+        required
+      />
+
+      <input
+        type="text"
+        placeholder="Staff ID"
+        [value]="staffId"
+        readonly
+        class="readonly-field"
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        [(ngModel)]="password"
+        name="password"
+        autocomplete="current-password"
+        required
+      />
+
+      <button type="submit">Login</button>
+    </form>
+
+    <div *ngIf="errorMessage" class="error-msg">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-msg">{{ successMessage }}</div>
+  </div>
+</div>

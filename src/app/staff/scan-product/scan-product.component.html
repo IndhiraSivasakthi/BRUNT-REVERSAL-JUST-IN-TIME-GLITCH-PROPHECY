@@ -1,0 +1,127 @@
+<div class="scan-product-container">
+    <h2> 🧾 View Product Details & QR</h2>
+  <!-- Filters -->
+  <div class="filters-bar">
+    <input
+      type="text"
+      placeholder="🔍 Search by Product Name or ID..."
+      [(ngModel)]="searchTerm"
+      (input)="filterProducts()"
+      class="search-bar"
+    />
+
+    <select [(ngModel)]="selectedCategory" (change)="filterProducts()" class="category-dropdown">
+      <option value="">All Categories</option>
+      <option *ngFor="let cat of uniqueCategories" [value]="cat">{{ cat }}</option>
+    </select>
+  </div>
+
+  <!-- Product Cards -->
+  <div class="product-cards">
+    <div class="product-card" *ngFor="let product of filteredProducts">
+      <h4 class="product-title">{{ product.name }}</h4> <!-- reduced size -->
+      <p><strong>ID:</strong> {{ product.productCode }}</p>
+
+      <div class="images-row">
+        <img *ngIf="product.image1" [src]="'data:image/jpeg;base64,' + product.image1" alt="Image 1" />
+        <img *ngIf="product.image2" [src]="'data:image/jpeg;base64,' + product.image2" alt="Image 2" />
+        <img *ngIf="product.image3" [src]="'data:image/jpeg;base64,' + product.image3" alt="Image 3" />
+      </div>
+
+      <div class="actions-row">
+        <button
+          *ngIf="product.qrCode"
+          class="btn btn-sm btn-outline-primary action-btn"
+          (click)="openQrModal(product.qrCode)">
+          Show QR
+        </button>
+
+        <button class="btn btn-sm btn-outline-danger action-btn" (click)="reportProduct(product)">
+          🚩 Report
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ✅ Modal to display QR Code -->
+<div
+  class="modal fade"
+  id="qrCodeModal"
+  tabindex="-1"
+  aria-labelledby="qrCodeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    
+      <!-- ✅ Modal Header with Close (×) Button -->
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <h5 class="modal-title" id="qrCodeModalLabel">Product QR Code</h5>
+        <button
+          type="button"
+          class="btn"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          style="font-size: 1.5rem; line-height: 1; border: none; background: none;"
+        >
+          &times;
+        </button>
+      </div>
+
+      <!-- ✅ Modal Body with Centered QR -->
+      <div class="modal-body text-center">
+        <img
+          [src]="selectedQrCode"
+          alt="QR Code"
+          class="qr-preview"
+          style="max-width: 200px; width: 100%; height: auto;"
+        />
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- 📋 Report Issue Modal -->
+<div class="modal fade" id="reportIssueModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+
+      <form (ngSubmit)="submitReport()" #reportForm="ngForm">
+        <div class="modal-header">
+          <h5 class="modal-title">🚩 Report Product Issue</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div><strong>Product:</strong> {{ selectedProduct?.name }}</div>
+          <div><strong>Product ID:</strong> {{ selectedProduct?.productCode }}</div>
+
+          <div class="form-group mt-3">
+            <label for="issueType">Issue Type</label>
+            <select id="issueType" class="form-control" required [(ngModel)]="reportData.issueType" name="issueType">
+              <option value="">Select an issue</option>
+              <option>Damaged Item</option>
+              <option>Wrong Info</option>
+              <option>Missing QR</option>
+              <option>Stock Mismatch</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group mt-3">
+            <label for="description">Description</label>
+            <textarea id="description" class="form-control" rows="3" required
+              [(ngModel)]="reportData.description" name="description" placeholder="Describe the issue..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-danger" [disabled]="!reportForm.form.valid">📤 Submit Report</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">❌ Cancel</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+

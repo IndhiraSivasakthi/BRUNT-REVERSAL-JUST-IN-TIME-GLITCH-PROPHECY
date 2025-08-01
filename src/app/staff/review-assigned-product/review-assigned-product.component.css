@@ -1,0 +1,77 @@
+/* Section title */
+.section-title {
+  text-align: center;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #1f2937;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+/* Container of all cards */
+.assigned-products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 30px;
+}
+
+/* Outer card with gradient */
+.product-card {
+  width: 240px;
+  height: 180px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #cbd5e1, #f1f5f9);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeInUp 0.6s ease forwards;
+  transition: transform 0.3s ease;
+}
+
+/* Inner glowing content (glassmorphism style) */
+.product-content {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 20px;
+  width: 90%;
+  height: 90%;
+  text-align: center;
+  border: 2px solid #60a5fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon styling */
+.product-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+}
+
+/* Product name */
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+/* Card appear animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hover effect */
+.product-card:hover {
+  transform: scale(1.07);
+}

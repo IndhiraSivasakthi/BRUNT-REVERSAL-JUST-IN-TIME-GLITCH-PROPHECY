@@ -1,0 +1,149 @@
+<h2>📋 Product Stock Overview</h2>
+
+<!-- 🔍 Filters and Search -->
+<div class="filters">
+  <input
+    type="text"
+    placeholder="🔍 Search products here..."
+    [(ngModel)]="searchTerm"
+    (input)="filterProducts()"
+  />
+
+  <select [(ngModel)]="selectedCategory" (change)="filterProducts()">
+    <option value="">All Categories</option>
+    <option value="electronics">Electronics</option>
+    <option value="furniture">Furniture</option>
+    <option value="clothes">Clothes</option>
+  </select>
+
+  <button (click)="refresh()">🔄 Refresh Table</button>
+</div>
+
+<!-- 📊 Summary Cards -->
+<div class="summary-cards">
+  <div class="card stat-card total-products">
+    <h4>Total Products</h4>
+    <p>{{ filteredProducts.length }}</p>
+  </div>
+  <div class="card stat-card total-stock">
+    <h4>Total Stock</h4>
+    <p>{{ totalStock() }}</p>
+  </div>
+  <div class="card stat-card low-stock">
+    <h4>Low Stock</h4>
+    <p>{{ lowStockCount() }}</p>
+  </div>
+</div>
+
+<!-- 📄 Product Stock Table -->
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>SKU</th>
+      <th>Product</th>
+      <th>Category</th>
+      <th>Brand</th>
+      <th>Quantity</th>
+      <th>Location</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of filteredProducts">
+      <td>{{ product.id }}</td>
+      <td>{{ product.productCode }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.category }}</td>
+      <td>{{ product.brand }}</td>
+      <td [ngClass]="getStockLevelColor(product.quantity)">
+        {{ product.quantity }}
+        <span class="badge" *ngIf="product.quantity < 10">
+          {{ product.quantity === 0 ? 'Out of Stock' : 'Low' }}
+        </span>
+      </td>
+      <td>{{ product.location }}</td>
+      <td>
+        <button class="btn-icon" title="Update Stock" (click)="openStockDialog(product)">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn-icon" title="View Details" (click)="viewDetails(product)">
+          <i class="fas fa-eye"></i>
+        </button>
+        <button class="btn-icon" title="Download QR" (click)="exportQR(product)">
+          <i class="fas fa-qrcode"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 📝 Update Stock Modal -->
+<div class="modal-overlay" *ngIf="showStockModal && selectedProduct">
+  <div class="horizontal-modal">
+    <!-- Left -->
+    <div class="modal-details-panel">
+      <h3>📝 Update Stock</h3>
+      <p><strong>{{ selectedProduct?.name }}</strong></p>
+      <p><b>SKU:</b> {{ selectedProduct?.productCode }}</p>
+      <p><b>Current Quantity:</b> 
+        <span [ngClass]="getStockLevelColor(selectedProduct?.quantity)">
+          {{ selectedProduct?.quantity }}
+        </span>
+      </p>
+      <button class="close-btn" (click)="closeStockDialog()">Cancel</button>
+    </div>
+
+    <!-- Right -->
+    <div class="modal-media-panel">
+      <label for="qty">Change Stock Qty (Use + or -)</label>
+      <input id="qty" type="number" [(ngModel)]="stockUpdateValue" placeholder="+5 / -3" />
+      <button class="update-btn" (click)="applyStockUpdate()">✔️ Apply</button>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Horizontal "View Details" Modal -->
+<div class="modal-overlay" *ngIf="showDetailsModal && selectedProduct">
+  <div class="horizontal-modal">
+    <!-- Left: Product Info -->
+    <div class="modal-details-panel">
+      <h3>📦 {{ selectedProduct.name }}</h3>
+      <p><b>SKU:</b> {{ selectedProduct.productCode }}</p>
+      <p><b>Category:</b> {{ selectedProduct.category }}</p>
+      <p><b>Brand:</b> {{ selectedProduct.brand }}</p>
+      <p><b>Quantity:</b> {{ selectedProduct.quantity }}</p>
+      <p><b>Price:</b> ₹{{ selectedProduct.price }}</p>
+      <p><b>Location:</b> {{ selectedProduct.location }}</p>
+      <p><b>Description:</b> {{ selectedProduct.description }}</p>
+      <button class="close-btn" (click)="closeDetailsModal()">Close</button>
+    </div>
+
+    <!-- Right: Images and QR -->
+    <div class="modal-media-panel">
+      <div><b>Images:</b></div>
+      <div class="product-images">
+        <img
+          [src]="'data:image/png;base64,' + selectedProduct.image1"
+          (click)="zoomImage('data:image/png;base64,' + selectedProduct.image1)"
+        />
+        <img
+          [src]="'data:image/png;base64,' + selectedProduct.image2"
+          (click)="zoomImage('data:image/png;base64,' + selectedProduct.image2)"
+        />
+        <img
+          [src]="'data:image/png;base64,' + selectedProduct.image3"
+          (click)="zoomImage('data:image/png;base64,' + selectedProduct.image3)"
+        />
+      </div>
+
+      <div style="margin-top:16px;"><b>QR Code:</b></div>
+      <img [src]="selectedProduct.qrCode" width="120" class="modal-qr-img" />
+    </div>
+  </div>
+</div>
+
+<!-- 🔍 Zoomed Image Overlay -->
+<div class="zoom-overlay" *ngIf="zoomedImage" (click)="closeZoom()">
+  <img [src]="zoomedImage" class="zoomed-img" />
+</div>  

@@ -1,0 +1,138 @@
+/* 🚪 Slide + Fade In Animation */
+@keyframes slideFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 🧩 Container (Sidebar-aware) */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 80px);
+  padding-left: 220px; /* Adjust if sidebar present */
+  background-image: url('/assets/bg1.jpg'); /* ✅ Correct path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #f8fafc; /* fallback */
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* 🧊 Stylish Login Box */
+.login-box {
+  background-color: #1e293b;
+  padding: 40px;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.15);
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  animation: slideFadeIn 0.6s ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.login-box:hover {
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.25);
+}
+
+/* 🟦 Title */
+.login-box h2 {
+  margin-bottom: 25px;
+  color: #38bdf8;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ✏️ Inputs and Button */
+.login-form input,
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* 🌙 Input fields */
+.login-form input {
+  background-color: #334155;
+  color: #f1f5f9;
+  border: 1px solid transparent;
+}
+
+.login-form input:focus {
+  background-color: #475569;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.3);
+  outline: none;
+}
+
+/* 🔘 Button with subtle scale */
+.login-form button {
+  background-color: #38bdf8;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+}
+
+.login-form button:hover {
+  background-color: #0ea5e9;
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.35);
+}
+
+.login-form button:active {
+  transform: scale(0.97);
+}
+
+/* ⚠️ Messages */
+.error-msg {
+  color: #f87171;
+  font-size: 14px;
+  margin-top: 10px;
+  animation: fadeInError 0.3s ease-in;
+}
+
+.success-msg {
+  color: #4ade80;
+  font-size: 14px;
+  margin-top: 10px;
+  animation: fadeInSuccess 0.3s ease-in;
+}
+
+/* ✅ Small fade-in animations */
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInSuccess {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

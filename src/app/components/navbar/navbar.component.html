@@ -1,0 +1,31 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <span class="logo">
+      <i class="fas fa-warehouse"></i> WARE<span class="accent">HOUSE</span>
+    </span>
+  </div>
+
+  <div class="navbar-right">
+    <!-- STAFF LOGIN LINK -->
+    <a routerLink="/staff-login" class="nav-link">
+      <i class="fas fa-user-cog"></i> Staff Login
+    </a>
+    
+
+    <!-- ADMIN LOGIN/LOGOUT LOGIC -->
+    <ng-container *ngIf="!isLoggedIn">
+      <a routerLink="/login" class="nav-link">
+        <i class="fas fa-user-lock"></i> Admin Login
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="isLoggedIn">
+      <span class="nav-user">
+        <i class="fas fa-user-check"></i> Admin
+      </span>
+      <a (click)="logout()" class="nav-link">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </ng-container>
+  </div>
+</nav>

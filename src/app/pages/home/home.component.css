@@ -1,0 +1,251 @@
+/* HOME TITLE */
+.home-container {
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+.home-container h3 {
+  font-size: 1.1rem;
+  color: #666; /* Subtle text */
+  margin-top: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+
+.home-container h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.home-container p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+/* DASHBOARD CARDS */
+.dashboard-cards {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  padding: 10px 30px;
+}
+
+.card {
+  flex: 1;
+  min-width: 220px;
+  max-width: 260px;
+  padding: 20px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  border-left: 8px solid #3f51b5;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #222;
+  margin: 0;
+}
+
+/* CARD COLORS */
+.total-products { border-color: #4caf50; }
+.total-stock    { border-color: #2196f3; }
+.low-stock      { border-color: #f44336; }
+.total-staff    { border-color: #ff9800; }
+
+.total-reports {
+  background-color: #ffe0e0;
+}
+.total-reports p {
+  color: #8b0000;
+}
+
+/* NOTIFICATION CARD SPECIFIC */
+.notification-card {
+  border-color: #ff5722;
+  background: linear-gradient(135deg, #fff3e0, #ffffff);
+}
+.view-notifications {
+  font-size: 0.5rem; /* Smaller size */
+  color: #8015d8; /* Deep orange to match notification theme */
+  margin-top: 4px;
+  cursor: pointer;
+  font-weight: 50;
+  transition: color 0.3s;
+}
+
+.badge {
+  background-color: red;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  margin-left: 6px;
+  font-weight: bold;
+}
+
+/* MODAL STYLING */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.modal-content {
+  background: #1f232a;
+  padding: 20px 24px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+   animation: fadeInModal 0.2s ease-out;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #f44336;
+}
+
+/* NOTIFICATION LIST */
+.notification-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.notification-list li {
+  padding: 10px;
+  background: #f9f9f9;
+  margin-bottom: 8px;
+  border-left: 4px solid #f44336;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.no-issues {
+  padding: 15px;
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Responsive Enhancement */
+@media (max-width: 480px) {
+  .card {
+    max-width: 100%;
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+}
+
+@keyframes fadeInModal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* General styling for all icons */
+.card i, .modal-content i, .home-container i {
+  color: #09c910; /* Green as default, can be changed per card */
+  margin-right: 8px;
+}
+
+/* Specific icon color overrides (optional and useful for visual distinction) */
+.total-products i {
+  color: #2196f3; /* Blue */
+}
+
+.total-stock i {
+  color: #9c27b0; /* Purple */
+}
+
+.low-stock i {
+  color: #f44336; /* Red */
+}
+
+.total-staff i {
+  color: #ff9800; /* Orange */
+}
+
+.total-reports i {
+  color: #607d8b; /* Slate */
+}
+
+.notification-card i {
+  color: #f3e309; /* Pink */
+}
+
+.notification-list i {
+  color: #ff5722;
+}
+
+.no-issues i {
+  color: #4caf50;
+}
+
+/* Optional: style badge */
+.badge {
+  background-color: red;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: 6px;
+}
+
+
+

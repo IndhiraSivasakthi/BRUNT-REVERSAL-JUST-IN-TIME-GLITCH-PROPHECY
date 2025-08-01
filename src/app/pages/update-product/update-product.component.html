@@ -1,0 +1,54 @@
+<h2>✏️ Update Product</h2>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate>
+  <label>
+    Product Code / SKU:
+    <input [value]="selectedProduct?.productCode" readonly />
+  </label>
+
+  <label>Product Name:
+    <input formControlName="name" required />
+  </label>
+
+  <label>Category:
+    <select formControlName="category" required>
+      <option value="">Select Category</option>
+      <option value="electronics">Electronics</option>
+      <option value="furniture">Furniture</option>
+      <option value="clothes">Clothes</option>
+    </select>
+  </label>
+
+  <label>Brand:
+    <input formControlName="brand" required />
+  </label>
+
+  <label>Quantity:
+    <input type="number" formControlName="quantity" required />
+  </label>
+
+  <label>Price (₹):
+    <input type="number" formControlName="price" required />
+  </label>
+
+  <label>Location:
+    <input formControlName="location" required />
+  </label>
+
+  <label>Description:
+    <textarea formControlName="description" rows="3"></textarea>
+  </label>
+
+  <label>
+  Upload New Images (Optional, exactly 3):
+  <input type="file" (change)="onFileChange($event)" multiple accept="image/*" />
+</label>
+
+
+<div class="image-preview">
+  <img *ngFor="let preview of imagePreviews" [src]="preview" width="100" height="100" />
+</div>
+
+
+  <button type="submit">Update Product</button>
+</form>

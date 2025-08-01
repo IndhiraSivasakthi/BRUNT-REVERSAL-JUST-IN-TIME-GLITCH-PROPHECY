@@ -1,0 +1,61 @@
+<h2>➕ Add New Staff</h2>
+
+<form [formGroup]="staffForm" (ngSubmit)="onSubmit()" class="staff-form">
+  <!-- Auto Staff ID (generated) -->
+  <label>
+    Staff ID:
+    <input formControlName="staffId" type="text" readonly />
+  </label>
+
+  <label>
+    Full Name:
+    <input formControlName="fullName" type="text" required />
+  </label>
+
+  <!-- Email / Username -->
+<label>
+  Email / Username:
+  <input
+    formControlName="email"
+    type="email"
+    required
+    autocomplete="username" 
+  />
+</label>
+
+<!-- Password -->
+<label>
+  Password:
+  <input
+    formControlName="password"
+    type="password"
+    required
+    minlength="6"
+    autocomplete="new-password" 
+  />
+</label>
+
+  <label>
+    Contact Number:
+    <input formControlName="contactNumber" type="text" />
+  </label>
+
+  <label>
+    Role:
+    <select formControlName="role">
+      <option value="User">User</option>
+      <option value="Supervisor">Supervisor</option>
+      <option value="Manager">Manager</option>
+    </select>
+  </label>
+
+  <label>
+    Notes:
+    <textarea formControlName="notes"></textarea>
+  </label>
+
+  <div class="form-actions">
+    <button type="submit">Add Staff</button>
+    <button type="button" (click)="onReset()">Reset</button>
+  </div>
+</form>

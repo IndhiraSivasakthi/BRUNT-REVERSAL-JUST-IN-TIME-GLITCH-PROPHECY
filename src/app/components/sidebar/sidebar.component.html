@@ -1,0 +1,52 @@
+<div class="sidebar">
+  <a routerLink="/home" class="sidebar-link">
+    <i class="fas fa-home"></i> Dashboard
+  </a>
+
+  <ng-container *ngIf="isLoggedIn; else authLinks">
+    <a routerLink="/add-product" class="sidebar-link">
+      <i class="fas fa-plus-square"></i> Add Product
+    </a>
+    <a routerLink="/view-product" class="sidebar-link">
+      <i class="fas fa-boxes"></i> View Products
+    </a>
+    <a routerLink="/update-product" class="sidebar-link">
+      <i class="fas fa-edit"></i> Update Product
+    </a>
+    <a routerLink="/view-stock" class="sidebar-link">
+      <i class="fas fa-clipboard-list"></i> View Stock
+    </a>
+    <a routerLink="/low-stock" class="sidebar-link">
+      <i class="fas fa-triangle-exclamation"></i> Low Stock
+    </a>
+    <a routerLink="/reports" class="sidebar-link">
+      <i class="fas fa-chart-bar"></i> Reports
+    </a>
+
+    <!-- 🚧 Manage Staff (Collapsible Section) -->
+    <div class="sidebar-link staff-toggle" (click)="toggleStaff()">
+      <i class="fas fa-users-cog"></i> Manage Staff
+      <i class="fas" [ngClass]="showStaffMenu ? 'fa-chevron-up' : 'fa-chevron-down'" style="margin-left:auto;"></i>
+    </div>
+    <div *ngIf="showStaffMenu" class="nested-links">
+      <a routerLink="/add-staff" class="sidebar-link nested">
+        <i class="fas fa-user-plus"></i> Add Staff
+      </a>
+      <a routerLink="/view-staff" class="sidebar-link nested">
+        <i class="fas fa-address-book"></i> View Staff
+      </a>
+      <a routerLink="/assign-product" class="sidebar-link nested">
+        <i class="fas fa-tasks"></i> Assign Products
+      </a>
+      <a routerLink="/view-assigned-products" class="sidebar-link nested">
+        <i class="fas fa-eye"></i> View Assigned
+      </a>
+    </div>
+  </ng-container>
+
+  <ng-template #authLinks>
+    <a href="#" class="sidebar-link" (click)="showLoginAlert()">
+      <i class="fas fa-lock"></i> Restricted Access
+    </a>
+  </ng-template>
+</div>

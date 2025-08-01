@@ -1,0 +1,14 @@
+/* Fix the layout container */
+.main-layout {
+  display: flex;
+  margin-top: 60px; /* Same as navbar height */
+}
+
+/* Sidebar already fixed, just leave as is */
+
+/* Content area beside sidebar */
+.main-content {
+  margin-left: 220px; /* Same as sidebar width */
+  padding: 20px;
+  flex: 1;
+}

@@ -1,0 +1,34 @@
+<div class="dashboard-container">
+  <div class="dashboard-card welcome-card">
+    <h2>👋 Welcome, <span>{{ staffName }}</span></h2>
+    <p class="subtitle">Your Staff ID: <strong>{{ staffId }}</strong></p>
+    <p class="subtitle">Choose an action below:</p>
+  </div>
+
+  <div class="dashboard-cards-row">
+    <div class="dashboard-card action-card" (click)="goTo('/scan-qr')">
+      <i class="fas fa-qrcode"></i>
+      <h3>Scan Product QR</h3>
+      <p>Scan a QR to see product details</p>
+    </div>
+
+
+    <div class="dashboard-card action-card" (click)="goTo('/review-assigned-product')">
+      <i class="fas fa-boxes"></i>
+      <h3>Assigned Products</h3>
+      <p>Browse products assigned to you</p>
+    </div>
+
+    <div class="dashboard-card action-card" (click)="goTo('/view-low-stock')">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h3>Low Stock Alerts</h3>
+      <p>View products that need restocking</p>
+    </div>
+
+    <div class="dashboard-card action-card logout-card" (click)="logout()">
+      <i class="fas fa-sign-out"></i>
+      <h3>Logout</h3>
+      <p>Sign out and return to login</p>
+    </div>
+  </div>
+</div>

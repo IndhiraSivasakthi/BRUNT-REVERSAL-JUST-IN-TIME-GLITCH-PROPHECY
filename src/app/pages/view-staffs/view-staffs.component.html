@@ -1,0 +1,82 @@
+<h2 class="text-center mb-4">👥 View Staff List</h2>
+
+<div class="filters">
+  <input type="text" placeholder="🔍 Search by name or email" [(ngModel)]="searchTerm" (input)="filterStaffs()" />
+  <button (click)="refreshStaffList()">🔄 Refresh</button>
+</div>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>Contact</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let staff of filteredStaff">
+      <td>{{ staff.staffId || staff.id }}</td>
+      <td>{{ staff.fullName }}</td>
+      <td>{{ staff.email }}</td>
+      <td>{{ staff.role }}</td>
+      <td>{{ staff.contactNumber }}</td>
+      <td>
+        <button class="btn btn-outline-primary btn-sm me-2" (click)="openDetailsModal(staff)">
+          <i class="fas fa-eye"></i>
+        </button>
+        <button class="btn btn-outline-success btn-sm me-2" (click)="openUpdateModal(staff)">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn btn-outline-danger btn-sm" (click)="deleteStaff(staff.id!)">
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 👁️ View Details Modal -->
+<div class="modal-overlay" *ngIf="showDetailsModal && selectedStaff">
+  <div class="modal-box">
+    <h4>👤 Staff Details</h4>
+    <p><strong>Full Name:</strong> {{ selectedStaff.fullName }}</p>
+    <p><strong>Email:</strong> {{ selectedStaff.email }}</p>
+    <p><strong>Contact:</strong> {{ selectedStaff.contactNumber }}</p>
+    <p><strong>Role:</strong> {{ selectedStaff.role }}</p>
+    <p><strong>Notes:</strong> {{ selectedStaff.notes }}</p>
+    <button class="close-btn" (click)="closeDetailsModal()">Close</button>
+  </div>
+</div>
+
+<!-- 📝 Update Modal -->
+<div class="modal-overlay" *ngIf="showUpdateModal">
+  <div class="modal-horizontal-box">
+    <!-- Left Panel -->
+    <div class="modal-details-panel">
+      <h4>📝 Update Staff Info</h4>
+      <label>Full Name:<input [(ngModel)]="updatedStaff.fullName" /></label>
+      <label>Email:<input [(ngModel)]="updatedStaff.email" /></label>
+      <label>Contact:<input [(ngModel)]="updatedStaff.contactNumber" /></label>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="modal-form-panel">
+      <label>Role:
+        <select [(ngModel)]="updatedStaff.role">
+          <option>User</option>
+          <option>Supervisor</option>
+          <option>Manager</option>
+        </select>
+      </label>
+      <label>Notes:<textarea [(ngModel)]="updatedStaff.notes"></textarea></label>
+
+      <div class="form-actions">
+        <button class="btn btn-success" (click)="saveUpdatedStaff()">Save</button>
+        <button class="btn btn-secondary" (click)="closeUpdateModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<h2 style="text-align: center; font-weight: bold;">📦 Assign Products to Staff</h2>
+
+<div class="form-container">
+  <form [formGroup]="assignForm" (ngSubmit)="submitAssignment()">
+    <div class="form-columns">
+      <!-- Left Column -->
+      <div class="left-column">
+        <label for="staffId">Select Staff ID:</label>
+        <select formControlName="staffId" (change)="onStaffSelect(assignForm.get('staffId')?.value)">
+          <option value="" disabled>Choose Staff ID</option>
+          <option *ngFor="let id of staffIds" [value]="id">{{ id }}</option>
+        </select>
+
+        <label for="fullName">Staff Name:</label>
+        <input type="text" formControlName="fullName" readonly />
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-column">
+        <label>Assigned Product 1:</label>
+        <select formControlName="product1">
+          <option value="" disabled>Select Product</option>
+          <option *ngFor="let name of productNames" [value]="name">{{ name }}</option>
+        </select>
+
+        <label>Assigned Product 2:</label>
+        <select formControlName="product2">
+          <option value="" disabled>Select Product</option>
+          <option *ngFor="let name of productNames" [value]="name">{{ name }}</option>
+        </select>
+
+        <label>Assigned Product 3:</label>
+        <select formControlName="product3">
+          <option value="" disabled>Select Product</option>
+          <option *ngFor="let name of productNames" [value]="name">{{ name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit">Assign Products</button>
+  </form>
+
+  <p *ngIf="successMessage">{{ successMessage }}</p>
+</div>
